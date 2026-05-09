@@ -429,6 +429,30 @@ params:
     button_text: "Donate on Ko-fi"
 ```
 
+## Announcement Banner
+
+Display a dismissible notification bar at the top of every page — useful for promotions, price updates, or temporary notices.
+
+```yaml
+params:
+  announcement:
+    enabled: true
+    type: info          # info (green) | warning (orange) | success (bright green) | alert (red)
+    date_from: "2026-05-01"   # optional: show only from this date
+    date_until: "2026-05-31"  # optional: hide after this date (omit = show forever)
+    messages:
+      pl:
+        text: "Zmienił się cennik! Zapoznaj się z nowymi cenami."
+        link_text: "Zobacz cennik"   # optional
+        link_url: "/pl/cennik/"      # optional
+      en:
+        text: "Our price list has been updated. Check the new prices!"
+        link_text: "See pricing"
+        link_url: "/en/pricing/"
+```
+
+Each language shows the banner **only if its `text` field is set**. To hide the banner for a specific language, omit or comment out its `text`. To hide it for all languages at once, set `enabled: false`.
+
 ## Analytics (Google Tag Manager)
 
 The theme includes built-in support for Google Tag Manager with GDPR-compliant cookie consent.

@@ -3,7 +3,7 @@
  */
 
 .blog-page {
-  padding-top: calc(var(--nav-height) + var(--space-3xl));
+  padding-top: calc(var(--nav-height) + var(--announcement-height) + var(--space-3xl));
 }
 
 .blog__grid {
@@ -196,7 +196,7 @@
 
 /* Blog Post (Single) */
 .blog-post__header {
-  padding-top: calc(var(--nav-height) + var(--space-3xl));
+  padding-top: calc(var(--nav-height) + var(--announcement-height) + var(--space-3xl));
   padding-bottom: var(--space-xl);
 }
 

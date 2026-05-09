@@ -118,6 +118,19 @@
 <style>{{ . | safeCSS }}</style>
 {{- end -}}
 
+{{/* 8. Announcement height override — must come after bundle to win the cascade */}}
+{{- $ann := site.Params.announcement -}}
+{{- if and $ann $ann.enabled -}}
+{{- $annShow := true -}}
+{{- with $ann.date_from }}{{- if lt now (time .) }}{{- $annShow = false -}}{{- end }}{{- end -}}
+{{- with $ann.date_until }}{{- if gt now (time (printf "%sT23:59:59Z" .)) }}{{- $annShow = false -}}{{- end }}{{- end -}}
+{{- $annMsg := index $ann.messages .Language.Lang -}}
+{{- if and $annShow $annMsg $annMsg.text -}}
+{{/* 48px = single line (1.5 line-height × ~32px font + padding); 88px = two lines on narrow screens */}}
+<style>:root{--announcement-height:88px}@media(min-width:600px){:root{--announcement-height:48px}}</style>
+{{- end -}}
+{{- end -}}
+
 {{/* Custom colors from site.Params.colors */}}
 {{- with site.Params.colors }}
 {{- $colors := . }}

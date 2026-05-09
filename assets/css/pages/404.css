@@ -3,9 +3,9 @@
  */
 
 .error-page {
-  padding-top: calc(var(--nav-height) + var(--space-3xl));
+  padding-top: calc(var(--nav-height) + var(--announcement-height) + var(--space-3xl));
   padding-bottom: var(--space-3xl);
-  min-height: calc(100vh - var(--nav-height));
+  min-height: calc(100vh - var(--nav-height) - var(--announcement-height));
   display: flex;
   align-items: center;
 }

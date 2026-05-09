@@ -238,6 +238,25 @@ params:
     enabled: true
     url: "https://buymeacoffee.com/maciejkosiarski"
     qr_image: "/images/bmc-qr-code.png"
+  # Announcement banner (optional)
+  # Each language shows the banner only if it has a non-empty "text" field — omit or comment out "text" to hide for that language.
+  # Disappears automatically after date_until when you rebuild the site.
+  # Types: info (green) | warning (orange) | success (bright green) | alert (red)
+  announcement:
+    enabled: true
+    type: alert
+    # date_from: "2026-05-01"   # optional: show only from this date
+    # date_until: "2026-05-31"  # optional: hide after this date (omit = show forever)
+    messages:
+      pl:
+        text: "To jest przykładowe powiadomienie. Edytuj lub wyłącz je w pliku hugo.yaml pod kluczem params.announcement."
+        # link_text: "Zobacz cennik"
+        # link_url: "/pl/cennik/"
+      en:
+        text: "This is an example announcement. Edit or disable it in hugo.yaml under params.announcement."
+        # link_text: "See pricing"
+        # link_url: "/en/pricing/"
+
   # Image optimization settings
   images:
     quality: 80                    # Image quality (1-100). Recommendations: 60-70 (size), 80 (balanced), 90-95 (quality)

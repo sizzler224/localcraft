@@ -3,7 +3,7 @@
  */
 
 .location-hero {
-  padding-top: calc(var(--nav-height) + var(--space-3xl));
+  padding-top: calc(var(--nav-height) + var(--announcement-height) + var(--space-3xl));
   text-align: center;
 }
 

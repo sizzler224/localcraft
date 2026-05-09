@@ -4,7 +4,7 @@
 
 /* Terms Page (list of all tags/categories) */
 .taxonomy-terms {
-  padding-top: calc(var(--nav-height) + var(--space-3xl));
+  padding-top: calc(var(--nav-height) + var(--announcement-height) + var(--space-3xl));
 }
 
 .taxonomy-terms__grid {
@@ -53,7 +53,7 @@
 
 /* Taxonomy Page (posts for a specific tag/category) */
 .taxonomy-page {
-  padding-top: calc(var(--nav-height) + var(--space-3xl));
+  padding-top: calc(var(--nav-height) + var(--announcement-height) + var(--space-3xl));
 }
 
 .taxonomy-page__count {
