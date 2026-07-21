@@ -81,18 +81,16 @@
 }
 
 .faq__answer {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.35s ease;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s ease;
 }
 
 .faq__answer--open {
-  grid-template-rows: 1fr;
+  max-height: 999px;
 }
 
 .faq__answer-content {
-  overflow: hidden;
-  min-height: 0;
   padding: 0 var(--space-xl) var(--space-xl);
   color: var(--text-muted);
   line-height: 1.7;

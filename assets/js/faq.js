@@ -23,6 +23,7 @@
           const otherAnswer = otherItem.querySelector('.faq__answer');
           if (otherButton && otherAnswer) {
             otherButton.setAttribute('aria-expanded', 'false');
+            otherAnswer.style.maxHeight = '';
             otherAnswer.classList.remove('faq__answer--open');
             otherItem.classList.remove('faq__item--open');
           }
@@ -31,7 +32,13 @@
 
       // Toggle current item
       button.setAttribute('aria-expanded', !isExpanded);
-      answer.classList.toggle('faq__answer--open', !isExpanded);
+      if (!isExpanded) {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        answer.classList.add('faq__answer--open');
+      } else {
+        answer.style.maxHeight = '';
+        answer.classList.remove('faq__answer--open');
+      }
       item.classList.toggle('faq__item--open', !isExpanded);
     });
 
