@@ -27,6 +27,8 @@
           {{/* Post image */}}
           {{- with $post.Params.image }}
             <a href="{{ $post.RelPermalink }}" class="blog-preview__image-link">
+              {{- $fit := $post.Params.imageFit | default "fill" -}}
+              {{- $ar := $post.Params.imageAspectRatio | default "16:10" -}}
               {{- partial "image.html" (dict
                 "src" .
                 "alt" $post.Title
@@ -34,8 +36,8 @@
                 "loading" "lazy"
                 "sizes" "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                 "widths" (slice 400 600 800 1000)
-                "fit" "fill"
-                "aspectRatio" "16:10"
+                "fit" $fit
+                "aspectRatio" $ar
               ) -}}
             </a>
           {{- else }}

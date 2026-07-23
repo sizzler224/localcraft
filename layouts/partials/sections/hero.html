@@ -58,6 +58,8 @@
       {{/* Right column - Image */}}
       <div class="hero__media animate-fade-up delay-2">
         {{- if $s.image }}
+          {{- $fit := $s.imageFit | default "resize" -}}
+          {{- $ar := $s.imageAspectRatio | default "" -}}
           {{- partial "image.html" (dict
             "src" $s.image
             "alt" ($s.heading | default "Hero")
@@ -65,6 +67,8 @@
             "loading" "eager"
             "sizes" "(min-width: 1024px) 50vw, 100vw"
             "widths" (slice 600 900 1200 1600)
+            "fit" $fit
+            "aspectRatio" $ar
           ) -}}
         {{- else }}
           {{/* SVG Placeholder */}}

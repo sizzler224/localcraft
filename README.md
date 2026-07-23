@@ -178,6 +178,8 @@ sections:
     heading_italic: "Salon"
     description: "Professional service since 2020"
     image: "/images/hero.jpg"
+    imageFit: "resize"              # optional, default: "resize"
+    imageAspectRatio: ""            # optional, only used with "fill"
     cta_primary:
       text: "Book Now"
       url: "/contact/"
@@ -280,6 +282,8 @@ assets/
 ---
 title: "My Blog Post"
 image: "/images/blog/post-image.jpg"
+imageFit: "fill"              # optional, default: "fill"
+imageAspectRatio: "16:10"     # optional, default: "16:10"
 ---
 ```
 
@@ -290,6 +294,8 @@ sections:
   - type: hero
     heading: "Welcome"
     image: "/images/hero.jpg"
+    imageFit: "resize"              # optional, default: "resize"
+    imageAspectRatio: ""            # optional, only used with "fill"
 ```
 
 #### Gallery (Before/After)
@@ -300,6 +306,8 @@ title: "Transformation Example"
 category: "Haircut"
 image_before: "/images/gallery/before.jpg"
 image_after: "/images/gallery/after.jpg"
+imageFit: "resize"              # optional, default: "resize"
+imageAspectRatio: ""            # optional, only used with "fill"
 ---
 ```
 
@@ -310,6 +318,42 @@ image_after: "/images/gallery/after.jpg"
 - name: "John Smith"
   role: "Senior Stylist"
   image: "/images/team/john.jpg"
+  imageFit: "resize"              # optional, default: "resize"
+  imageAspectRatio: ""            # optional, only used with "fill"
+```
+
+#### Location Page
+
+```yaml
+---
+title: "Our Location"
+image: "/images/outside.jpg"
+imageFit: "fill"              # optional, default: "resize"
+imageAspectRatio: "3:2"       # optional, only used with "fill"
+---
+```
+
+### Image Fit & Aspect Ratio
+
+Control how images are cropped per page via front matter:
+
+| Parameter | Values | Default (cards) | Default (standalone) |
+|-----------|--------|-----------------|----------------------|
+| `imageFit` | `resize`, `fill` | `fill` | `resize` |
+| `imageAspectRatio` | e.g. `16:10`, `4:3`, `3:2` | `16:10` | `""` |
+
+- **`resize`** — scales to fit within the container, preserves original proportions (no cropping)
+- **`fill`** — smart-crops to fill the container at the given aspect ratio
+
+**Cards** (blog list, taxonomy, blog-preview, related posts, credentials) default to `fill` for consistent grid heights. **Standalone images** (hero, location, gallery, team) default to `resize` to avoid cropping.
+
+```yaml
+# Example: override card cropping for a specific post
+---
+title: "My Post"
+image: "/images/post.jpg"
+imageFit: "resize"
+---
 ```
 
 ### Recommended Image Sizes

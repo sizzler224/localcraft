@@ -75,6 +75,8 @@
                   "loading" "lazy"
                   "sizes" "(min-width: 768px) 400px, 100vw"
                   "widths" (slice 300 400 600 800)
+                  "fit" ($member.imageFit | default "resize")
+                  "aspectRatio" ($member.imageAspectRatio | default "")
                 ) -}}
               {{ else }}
                 {{/* Avatar placeholder with initials */}}

@@ -36,11 +36,14 @@
 
     <div class="gallery__grid">
       {{- range $pages -}}
+      {{- $item := . -}}
       <article class="gallery__card animate-fade-up delay-2" data-category="{{ .Params.category | urlize }}">
         <div class="ba-slider" aria-label="{{ i18n "ba_slider_label" | default "Before and after comparison. Drag the slider to compare." }}">
           {{/* After image (background layer) */}}
           <div class="ba-slider__after">
             {{ with .Params.image_after }}
+              {{- $fit := $item.Params.imageFit | default "resize" -}}
+              {{- $ar := $item.Params.imageAspectRatio | default "" -}}
               {{- partial "image.html" (dict
                 "src" .
                 "alt" (printf "%s — %s" $.Title (i18n "after" | default "after"))
@@ -48,6 +51,8 @@
                 "loading" "lazy"
                 "sizes" "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                 "widths" (slice 400 600 800 1000)
+                "fit" $fit
+                "aspectRatio" $ar
               ) -}}
             {{ else }}
               <div class="ba-slider__placeholder ba-slider__placeholder--after" aria-hidden="true">
@@ -64,6 +69,8 @@
           {{/* Before image (overlay layer with clip-path) */}}
           <div class="ba-slider__before">
             {{ with .Params.image_before }}
+              {{- $fit := $item.Params.imageFit | default "resize" -}}
+              {{- $ar := $item.Params.imageAspectRatio | default "" -}}
               {{- partial "image.html" (dict
                 "src" .
                 "alt" (printf "%s — %s" $.Title (i18n "before" | default "before"))
@@ -71,6 +78,8 @@
                 "loading" "lazy"
                 "sizes" "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                 "widths" (slice 400 600 800 1000)
+                "fit" $fit
+                "aspectRatio" $ar
               ) -}}
             {{ else }}
               <div class="ba-slider__placeholder ba-slider__placeholder--before" aria-hidden="true">

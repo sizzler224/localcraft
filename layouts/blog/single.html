@@ -38,6 +38,8 @@
   {{ with .Params.image }}
     <div class="blog-post__hero animate-fade-up delay-1">
       <div class="container">
+        {{- $fit := $.Params.imageFit | default "fill" -}}
+        {{- $ar := $.Params.imageAspectRatio | default "16:9" -}}
         {{- partial "image.html" (dict
           "src" .
           "alt" $.Title
@@ -45,8 +47,8 @@
           "loading" "eager"
           "sizes" "(min-width: 1200px) 1200px, 100vw"
           "widths" (slice 800 1200 1600 2000)
-          "fit" "fill"
-          "aspectRatio" "16:9"
+          "fit" $fit
+          "aspectRatio" $ar
         ) -}}
       </div>
     </div>
@@ -65,8 +67,11 @@
           <h2 class="blog-post__related-title">{{ i18n "related_posts" | default "Related posts" }}</h2>
           <div class="blog-post__related-grid">
             {{ range . }}
+              {{ $rp := . }}
               <a href="{{ .RelPermalink }}" class="blog-post__related-card">
                 {{ with .Params.image }}
+                  {{- $fit := $rp.Params.imageFit | default "fill" -}}
+                  {{- $ar := $rp.Params.imageAspectRatio | default "16:10" -}}
                   {{- partial "image.html" (dict
                     "src" .
                     "alt" $.Title
@@ -74,8 +79,8 @@
                     "loading" "lazy"
                     "sizes" "(min-width: 768px) 33vw, 100vw"
                     "widths" (slice 400 600 800)
-                    "fit" "fill"
-                    "aspectRatio" "16:10"
+                    "fit" $fit
+                    "aspectRatio" $ar
                   ) -}}
                 {{ else }}
                   <div class="blog-post__related-placeholder">

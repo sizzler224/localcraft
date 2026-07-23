@@ -31,7 +31,9 @@
 
         {{ with .Params.image }}
         <div class="location-card location-card--photo animate-fade-up delay-1">
-          {{ partial "image.html" (dict "src" . "alt" (i18n "our_place") "sizes" "(max-width: 968px) 100vw, 60vw" "widths" (slice 400 800 1200) "fit" "fill" "aspectRatio" "3:2") }}
+          {{- $fit := $.Params.imageFit | default "resize" -}}
+          {{- $ar := $.Params.imageAspectRatio | default "" -}}
+          {{ partial "image.html" (dict "src" . "alt" (i18n "our_place") "sizes" "(max-width: 968px) 100vw, 60vw" "widths" (slice 400 800 1200) "fit" $fit "aspectRatio" $ar) }}
         </div>
         {{ end }}
       </div>
